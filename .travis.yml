@@ -6,16 +6,16 @@ node_js:
 services: 
     - docker
 before_install: 
-    - docker build -t yuwangjr/sample-app -f Dockerfile.dev .
+    - docker build -t sunjenny/sample-app -f Dockerfile.dev .
 script:     
-    - docker run -e CI=true yuwangjr/sample-app npm run test -- --coverage --watchAll=false
+    - docker run -e CI=true sunjenny/sample-app npm run test -- --coverage --watchAll=false
 
 deploy:
   provider: elasticbeanstalk
-  region: "ap-southeast-2"
+  region: "us-east-1"
   app: "sample-docker-react"
   env: "Sampledockerreact-env" ### Your EB App environment name
-  bucket_name: "elasticbeanstalk-ap-southeast-2-482739392776"
+  bucket_name: "elasticbeanstalk-us-east-1-368399608041"
   bucket_path: "EBApptest"
   on:
     branch: main
